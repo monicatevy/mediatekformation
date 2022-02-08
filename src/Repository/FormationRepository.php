@@ -33,7 +33,7 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-     * Enregistrements dont un champ contientune valeur
+     * Enregistrements dont un champ contient une valeur
      * ou tous les enregistrements si la valeur est vide
      * @param type $champ
      * @param type $valeur
@@ -43,6 +43,16 @@ class FormationRepository extends ServiceEntityRepository
         if($valeur==""){
             return $this->createQueryBuilder('f')
                     ->orderBy('f.'.$champ, 'ASC')
+                    ->getQuery()
+                    ->getResult();
+            
+        }else if($champ=="niveau"){
+            return $this->createQueryBuilder('f')
+                    ->innerJoin('f.niveau', 'n')
+                    ->where('n.level LIKE :valeur')
+                    ->setParameter('valeur', $valeur)
+                    ->orderBy('f.publishedAt', 'DESC')
+                    ->setParameter('valeur', '%'.$valeur.'%')
                     ->getQuery()
                     ->getResult();
         }else{
