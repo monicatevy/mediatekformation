@@ -139,11 +139,16 @@ class Formation
     {
         return $this->niveau;
     }
-
+    
     public function setNiveau(?Niveau $niveau): self
     {
         $this->niveau = $niveau;
 
         return $this;
+    }
+    
+    public function getLevel(): ?string
+    {
+        return $this->getNiveau()->getLevel();
     }
 }

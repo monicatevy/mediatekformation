@@ -18,7 +18,7 @@ class NiveauRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Niveau::class);
     }
-
+    
     // /**
     //  * @return Niveau[] Returns an array of Niveau objects
     //  */
