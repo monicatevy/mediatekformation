@@ -19,17 +19,18 @@
                         <div class="row mt-3 mr-3">
                             <div class="col">
                                 <!-- emplacement photo -->
-                                {% if formation.picture %}
-                                    <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                    <img src="{{ formation.picture }}" 
-                                         class="card-img-top" style="width:100%;height:auto;">
-                                    </a>    
-                                {% endif %}
+                                <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                    <img class="card-img-top" style="width: 246px; height: 184px; object-fit: cover;"
+                                         src="{%if formation.picture %}{{ formation.picture }}
+                                         {% else %}https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png{% endif %}">
+                                </a>
                             </div>
                             <div class="col">
                                 <p>{{ formation.publishedatstring }}</p>
                                 <h4 class="text-info mt-1">
-                                    {{ formation.title }}
+                                    <a href="{{ path('formations.showone', {id:formation.id}) }}" style="text-decoration: none; color: inherit; ">
+                                        {{ formation.title }}
+                                    </a>
                                 </h4>
                             </div>    
                         </div>                    

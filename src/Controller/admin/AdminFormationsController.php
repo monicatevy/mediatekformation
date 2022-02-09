@@ -93,6 +93,18 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * @Route("/admin/formation/{id}", name="admin.formation.showone")
+     * @param type $id
+     * @return Response
+     */
+    public function showOne($id): Response{
+        $formation = $this->repository->find($id);
+        return $this->render("admin/admin.formation.html.twig", [
+            'formation' => $formation
+        ]);        
+    }
+    
+    /**
      * @Route("/admin/ajout/", name="admin.formation.ajout")
      * @param Request $request
      * @return Response

@@ -8,9 +8,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 class FormationType extends AbstractType
 {
@@ -20,33 +22,43 @@ class FormationType extends AbstractType
             ->add('publishedAt', DateType::class, [
                 'label' => 'Date de publication',
                 'required' => true,
-                'data' => new \DateTime()
+                'data' => new \DateTime(),
             ])
-            ->add('title', null, [
+            ->add('title', TextType::class, [
                'label' => 'Titre',
-               'required' => true
+               'required' => true,
+               'attr' => ['maxlength' => 100],
             ])
             ->add('description', TextareaType::class, [
                'label' => 'Description',
-                'attr' => ['rows' => '6'],
+               'required' => false,
+               'attr' => ['rows' => 6],
             ])
-            ->add('miniature', null, [
+            ->add('miniature', UrlType::class, [
                'label' => 'Miniature URL',
+               'required' => false,
+               'default_protocol' => null,
+               'attr' => ['maxlength' => 100],
             ])
-            ->add('picture', null, [
+            ->add('picture', UrlType::class, [
                'label' => 'Image URL',
+               'required' => false,
+               'default_protocol' => null,
+               'attr' => ['maxlength' => 100],
             ])
-            ->add('videoId', null, [
+            ->add('videoId', TextType::class, [
                'label' => 'Video ID',
+               'required' => false,
+               'attr' => ['maxlength' => 11],
             ])
             ->add('niveau', EntityType::class, [
                 'label' => 'Niveau',
+                'required' => true,
                 'class' => Niveau::class,
                 'choice_label' => 'level',
-                'required' => true
             ])  
             ->add('submit', SubmitType::class, [
-                'label' => 'Enregistrer'
+                'label' => 'Enregistrer',
             ])
         ;
     }
