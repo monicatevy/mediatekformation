@@ -22,18 +22,19 @@
             </tr>
         </thead>
         <tbody>
-            <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
-                <tr>
+            <tr>
+                <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
                     <td>
                         <div class="form-group">
                             <input type="text" name="libelle" placeholder="Niveau...">
+                            <input type="hidden" name="_token" value="{{ csrf_token('ajout_niveau') }}">
                         </div>
                     </td>
                     <td class="text-center">
                         <button type="submit" class="btn btn-primary" style="width: 100px;">Ajouter</button>
                     </td>
-                </tr>
-            </form>
+                </form>
+            </tr>
             {% for niveau in niveaux %}
                 <tr>
                     <td>

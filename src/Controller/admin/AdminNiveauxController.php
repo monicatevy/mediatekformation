@@ -44,14 +44,16 @@ class AdminNiveauxController extends AbstractController{
      * @return Response
      */
     public function ajout(Request $request): Response {
-        $libelleNiveau = $request->get("libelle");
-        $niveau = new Niveau();
-        $niveau->setLevel($libelleNiveau);
-        $this->om->persist($niveau);
-        $this->om->flush();
-        $this->addFlash('success',
-                'Le niveau a été ajouté avec succès.'
-            );
+        if($this->isCsrfTokenValid('ajout_niveau', $request->get('_token'))){
+            $libelleNiveau = $request->get("libelle");
+            $niveau = new Niveau();
+            $niveau->setLevel($libelleNiveau);
+            $this->om->persist($niveau);
+            $this->om->flush();
+            $this->addFlash('success',
+                    'Le niveau a été ajouté avec succès.'
+                );
+        }
         return $this->redirectToRoute('admin.niveaux');
     }
     
