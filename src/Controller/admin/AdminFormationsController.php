@@ -43,7 +43,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
-     * @Route("/admin", name="admin.formations")
+     * @Route("/admin/", name="admin.formations")
      * @return Response
      */
     public function index(): Response {
@@ -105,6 +105,9 @@ class AdminFormationsController extends AbstractController{
         if($formFormation->isSubmitted() && $formFormation->isValid()){
             $this->om->persist($formation);
             $this->om->flush();
+            $this->addFlash('success',
+                'La formation a été ajouté avec succès.'
+            );
             return $this->redirectToRoute('admin.formations');
         }
         
@@ -126,6 +129,9 @@ class AdminFormationsController extends AbstractController{
         $formFormation->handleRequest($request);
         if($formFormation->isSubmitted() && $formFormation->isValid()){
             $this->om->flush();
+            $this->addFlash('success',
+                'La formation a été modifiée avec succès.'
+            );
             return $this->redirectToRoute('admin.formations');
         }
         
@@ -143,6 +149,9 @@ class AdminFormationsController extends AbstractController{
     public function suppr(Formation $formation): Response{
         $this->om->remove($formation);
         $this->om->flush();
+        $this->addFlash('success',
+                'La formation a été supprimée avec succès.'
+            );
         return $this->redirectToRoute('admin.formations');
     }
 }

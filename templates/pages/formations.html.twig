@@ -28,7 +28,7 @@
                             <select type="text" class="sm" name="recherche">
                                 {% for niveau in niveaux %}
                                     <option>
-                                        {{ niveau.level|capitalize }}
+                                        {{ niveau.level }}
                                     </option>
                                 {% endfor %}
                             </select>
@@ -58,7 +58,7 @@
                         </h5>
                     </td>
                     <td>
-                        {{ formation.level|capitalize }}
+                        {{ formation.level }}
                     </td>
                     <td class="text-center">
                         {{ formation.publishedatstring }}
