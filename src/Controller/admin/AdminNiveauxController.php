@@ -49,6 +49,9 @@ class AdminNiveauxController extends AbstractController{
         $niveau->setLevel($libelleNiveau);
         $this->om->persist($niveau);
         $this->om->flush();
+        $this->addFlash('success',
+                'Le niveau a été ajouté avec succès.'
+            );
         return $this->redirectToRoute('admin.niveaux');
     }
     
@@ -61,9 +64,14 @@ class AdminNiveauxController extends AbstractController{
         try{
             $this->om->remove($niveau);
             $this->om->flush();
+            $this->addFlash('success',
+                'Le niveau a été supprimé avec succès.'
+            );
         }
         catch (ForeignKeyConstraintViolationException $e){
-            
+            $this->addFlash('error',
+                'La suppression est impossible car ce niveau a été utilisé par d\'autre(s) formation(s).'
+            );
         }
         return $this->redirectToRoute('admin.niveaux');
     }

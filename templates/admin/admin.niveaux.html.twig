@@ -1,5 +1,15 @@
 {% extends "basefrontadmin.html.twig" %}
 {% block body %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger mt-2 mb-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2 mb-2">
+            {{ message }}
+        </div>
+    {% endfor %}
     <table class="table table-striped">
         <thead>
             <tr>
