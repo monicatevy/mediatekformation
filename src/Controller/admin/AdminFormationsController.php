@@ -145,5 +145,4 @@ class AdminFormationsController extends AbstractController{
         $this->om->flush();
         return $this->redirectToRoute('admin.formations');
     }
-    
 }
