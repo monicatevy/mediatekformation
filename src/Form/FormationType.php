@@ -20,6 +20,7 @@ class FormationType extends AbstractType
             ->add('publishedAt', DateType::class, [
                 'label' => 'Date de publication',
                 'required' => true,
+                'data' => new \DateTime()
             ])
             ->add('title', null, [
                'label' => 'Titre',
