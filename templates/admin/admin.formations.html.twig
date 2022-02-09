@@ -65,7 +65,9 @@
                 <tr>
                     <td>
                         <h5 class="text-info">
-                            {{ formation.title }}
+                            <a href="{{ path('admin.formation.showone', {id:formation.id}) }}" style="text-decoration: none; color: inherit; ">
+                                {{ formation.title }}
+                            </a>
                         </h5>
                     </td>
                     <td>
@@ -75,11 +77,9 @@
                         {{ formation.publishedatstring }}
                     </td>
                     <td class="text-center">
-                        {% if formation.miniature %}
-                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                <img src="{{ formation.miniature }}">
-                            </a>
-                        {% endif %}
+                        <a href="{{ path('admin.formation.showone', {id:formation.id}) }}">
+                            <img width="120" height="90" src="{%if formation.miniature %}{{ formation.miniature }}{% else %}https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png{% endif %}">
+                        </a>
                     </td>
                     <td class="text-center">
                         <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary")">Editer</a>
