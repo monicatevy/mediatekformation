@@ -41,7 +41,7 @@ class Niveau
 
     public function getLevel(): ?string
     {
-        return $this->level;
+        return ucfirst($this->level);
     }
 
     public function setLevel(string $level): self

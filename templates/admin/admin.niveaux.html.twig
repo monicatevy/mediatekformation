@@ -1,18 +1,18 @@
 {% extends "basefrontadmin.html.twig" %}
-{% block body %}    
+{% block body %}
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="text-left align-top" style="width: 200px;" scope="col">
+                <th class="text-left align-top" style="width: 200px; border-top: none" scope="col">
                     Libellé
                 </th>
-                <th class="text-center align-top" scope="col">
+                <th class="text-center align-top" style="border-top: none" scope="col">
                     Actions
                 </th>
             </tr>
         </thead>
         <tbody>
-            <form class="form-inline mt-2 mb-2" method="POST" action="#">
+            <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
                 <tr>
                     <td>
                         <div class="form-group">
@@ -32,7 +32,7 @@
                         </h5>
                     </td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-danger" style="width: 100px;" onclick="return confirm('Etes-vous sûr de vouloir supprimer le niveau : {{ niveau.level }} ?')">Supprimer</a>
+                        <a href="{{ path('admin.niveau.suppr', {id:niveau.id}) }}" class="btn btn-danger" style="width: 100px;" onclick="return confirm('Etes-vous sûr de vouloir supprimer le niveau : {{ niveau.level }} ?')">Supprimer</a>
                     </td>
                 </tr>
             {% endfor %}
