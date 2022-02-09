@@ -24,12 +24,12 @@ class NiveauController extends AbstractController
     }
     
     /**
-     * @Route("/niveaux", name="niveaux")
+     * @Route("/admin/niveaux", name="admin.niveaux")
      * @return Response
      */
     public function index(): Response{
         $niveaux = $this->repository->findAll();
-        return $this->render('formations/index.html.twig', [
+        return $this->render("admin/admin.niveaux.html.twig", [
             'niveaux' => $niveaux,
         ]);
     }

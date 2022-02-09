@@ -43,7 +43,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
-     * @Route("/admin", name="admin.formations")
+     * @Route("/admin/", name="admin.formations")
      * @return Response
      */
     public function index(): Response {
