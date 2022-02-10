@@ -19,6 +19,12 @@
                         <a class="nav-link" href="{{ path('formations') }}">Formations</a>
                     </li>
                 </ul>
+                {% if app.user %}
+                    <span class="btn text-center">{{ app.user.username }}</span>
+                    <a class="btn btn-dark" href="{{ path('app_logout')}}">Déconnexion</a>
+                {% else %}
+                    <a class="btn btn-outline-primary" href="{{ path('app_login')}}">Connexion</a>
+                {% endif %}
             </div>
         </nav>        
     </div>
