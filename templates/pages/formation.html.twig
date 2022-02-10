@@ -1,5 +1,11 @@
 {% extends "basefront.html.twig" %}
 {% block body %}
+    {% if formation.videoid %}
+    {% else %}
+        <div class="alert alert-warning mt-2 mb-2">
+            Nous sommes désolés, aucune vidéo n'a été trouvée.
+        </div>
+    {% endif %}
     <div class="row mt-3">
         <div class="col">
             <!-- emplacement de la vidéo -->
@@ -9,7 +15,11 @@
                         title="YouTube video player" frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
-                </iframe>                          
+                </iframe>
+            {% else %}
+                <div>
+                    <img width="560" height="315" src="https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png">
+                </div>
             {% endif %}
         </div>
         <div class="col">
