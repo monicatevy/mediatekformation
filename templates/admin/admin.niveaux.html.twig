@@ -26,7 +26,7 @@
                 <form class="form-inline mt-2 mb-2" method="POST" action="{{ path('admin.niveau.ajout') }}">
                     <td>
                         <div class="form-group">
-                            <input type="text" name="libelle" placeholder="Niveau...">
+                            <input type="text" name="libelle" placeholder="Niveau..." maxlength="30">
                             <input type="hidden" name="_token" value="{{ csrf_token('ajout_niveau') }}">
                         </div>
                     </td>

@@ -5,6 +5,7 @@ namespace App\Entity;
 use DateTimeInterface;
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -19,12 +20,14 @@ class Formation
     private $id;
 
     /**
+     * @Assert\Date
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $publishedAt;
 
     /**
-     * @ORM\Column(type="string", length=91, nullable=true)
+     * @Assert\Length(max = 100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $title;
 
@@ -34,16 +37,25 @@ class Formation
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=46, nullable=true)
+     * @Assert\Url(
+     *    protocols = {"http", "https"},
+     *    message = "{{ value }} n'est pas une URL valide."
+     * )
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $miniature;
 
     /**
-     * @ORM\Column(type="string", length=48, nullable=true)
+     * @Assert\Url(
+     *    protocols = {"http", "https"},
+     *    message = "{{ value }} n'est pas une URL valide."
+     * )
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $picture;
 
     /**
+     * @Assert\Length(max = 11)
      * @ORM\Column(type="string", length=11, nullable=true)
      */
     private $videoId;

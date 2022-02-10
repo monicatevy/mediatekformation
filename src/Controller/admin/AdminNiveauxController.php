@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Exception\DriverException;
 
 /**
  * Description of AdminNiveauxController
@@ -45,14 +46,21 @@ class AdminNiveauxController extends AbstractController{
      */
     public function ajout(Request $request): Response {
         if($this->isCsrfTokenValid('ajout_niveau', $request->get('_token'))){
-            $libelleNiveau = $request->get("libelle");
-            $niveau = new Niveau();
-            $niveau->setLevel($libelleNiveau);
-            $this->om->persist($niveau);
-            $this->om->flush();
-            $this->addFlash('success',
-                    'Le niveau a été ajouté avec succès.'
-                );
+            try{
+                $libelleNiveau = $request->get("libelle");
+                $niveau = new Niveau();
+                $niveau->setLevel($libelleNiveau);
+                $this->om->persist($niveau);
+                $this->om->flush();
+                $this->addFlash('success',
+                        'Le niveau a été ajouté avec succès.'
+                    );
+            }
+            catch (DriverException $e){
+                $this->addFlash('error',
+                    'Ce champ ne peut dépasser 30 caractères. Veuillez réessayer.'
+                    );
+            }
         }
         return $this->redirectToRoute('admin.niveaux');
     }
