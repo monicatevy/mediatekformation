@@ -112,8 +112,8 @@ class AdminFormationsController extends AbstractController{
     public function ajout(Request $request): Response {
         $formation = new Formation();
         $formFormation = $this->createForm(FormationType::class, $formation);
-        
         $formFormation->handleRequest($request);
+        
         if($formFormation->isSubmitted() && $formFormation->isValid()){
             $this->om->persist($formation);
             $this->om->flush();
