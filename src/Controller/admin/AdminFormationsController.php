@@ -13,7 +13,6 @@ use App\Form\FormationType;
 
 /**
  * Description of AdminFormationsController
- *
  * @author monicatevy
  */
 class AdminFormationsController extends AbstractController{

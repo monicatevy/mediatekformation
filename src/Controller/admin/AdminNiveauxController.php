@@ -13,7 +13,6 @@ use Doctrine\DBAL\Exception\DriverException;
 
 /**
  * Description of AdminNiveauxController
- *
  * @author monicatevy
  */
 class AdminNiveauxController extends AbstractController{
