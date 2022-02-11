@@ -12,11 +12,32 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin.formations') }}">Gestions des formations</a>
+                        <a class="nav-link" href="{{ path('admin.formations') }}"
+                           {% if app.request.attributes.get('_route') == 'admin.formations' %}
+                               style="font-weight: bold"
+                           {% endif %}>
+                          Gestions des formations</a>
                     </li>
+                    
+                    {% if app.request.attributes.get('_route') == 'admin.formation.ajout' %}
+                        <li><a class="nav-link">></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold">Ajouter</a>
+                        </li>
+                    {% elseif app.request.attributes.get('_route') == 'admin.formation.edit' %}
+                        <li><a class="nav-link">></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-weight: bold">Editer</a>
+                        </li>
+                    {% endif %}
+                    
+                    <li><a class="nav-link">|</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin.niveaux') }}">Gestions des niveaux</a>
+                        <a class="nav-link" href="{{ path('admin.niveaux') }}"
+                          {% if app.request.attributes.get('_route') == 'admin.niveaux' %}style="font-weight: bold"{% endif %}>
+                          Gestions des niveaux</a>
                     </li>
                 </ul>
                 {% if app.user %}

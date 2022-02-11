@@ -13,11 +13,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('accueil') }}">Accueil</a>
+                        <a class="nav-link" href="{{ path('accueil') }}"
+                          {% if app.request.attributes.get('_route') == 'accueil' %}style="font-weight: bold"{% endif %}>
+                          Accueil</a>
                     </li>
+                    
+                    {% if is_granted('ROLE_ADMIN') %}
+                    {% else %}
+                        <li><a class="nav-link">|</a></li>
+                    {% endif %}
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('formations') }}">Formations</a>
+                        <a class="nav-link" href="{{ path('formations') }}"
+                          {% if app.request.attributes.get('_route') == 'formations' %}style="font-weight: bold"{% endif %}>
+                          Formations</a>
                     </li>
+                    
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a class="nav-link">|</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('admin.formations') }}">
+                              Dashboard</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 {% if app.user %}
                     <span class="btn text-center">{{ app.user.username }}</span>
