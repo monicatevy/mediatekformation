@@ -13,6 +13,7 @@ use App\Form\FormationType;
 
 /**
  * Description of AdminFormationsController
+ * 
  * @author monicatevy
  */
 class AdminFormationsController extends AbstractController{
@@ -42,6 +43,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Retourne toutes les formations
      * @Route("/admin/", name="admin.formations")
      * @return Response
      */
@@ -56,6 +58,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Retourne les formations triées (ASC/DESC) sur le champ (ex: date, titre)
      * @Route("/admin/formations/tri/{champ}/{ordre}", name="admin.formations.sort")
      * @param type $champ
      * @param type $ordre
@@ -72,6 +75,8 @@ class AdminFormationsController extends AbstractController{
     }   
         
     /**
+     * Retourne toutes les formations contenant une certaine valeur
+     * ou retourne toutes les formations triées par défaut si aucune valeur n'est saisie
      * @Route("/admin/formations/recherche/{champ}", name="admin.formations.findallcontain")
      * @param type $champ
      * @param Request $request
@@ -92,6 +97,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Retourne le détail d'une formation
      * @Route("/admin/formation/{id}", name="admin.formation.showone")
      * @param type $id
      * @return Response
@@ -104,6 +110,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Redirection vers la page d'ajout d'une nouvelle formation
      * @Route("/admin/ajout/", name="admin.formation.ajout")
      * @param Request $request
      * @return Response
@@ -129,6 +136,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Redirection vers la page d'édition d'une formation
      * @Route("/admin/edit/{id}", name="admin.formation.edit")
      * @param Formation $formation
      * @param Request $request
@@ -153,6 +161,7 @@ class AdminFormationsController extends AbstractController{
     }
     
     /**
+     * Suppression d'une formation après confirmation par l'utilisateur
      * @Route("/admin/suppr/{id}", name="admin.formation.suppr")
      * @param Formation $formation
      * @return Response

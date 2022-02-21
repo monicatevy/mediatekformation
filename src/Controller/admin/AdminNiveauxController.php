@@ -13,6 +13,7 @@ use Doctrine\DBAL\Exception\DriverException;
 
 /**
  * Description of AdminNiveauxController
+ * 
  * @author monicatevy
  */
 class AdminNiveauxController extends AbstractController{
@@ -39,14 +40,16 @@ class AdminNiveauxController extends AbstractController{
     }
     
     /**
+     * Ajout d'un niveau si la valeur saisie n'est pas nulle
      * @Route("/admin/niveau/ajout", name="admin.niveau.ajout")
      * @param Request $request
      * @return Response
+     * @throws DriverException si le nombre de caractères dépassent la limite du champ
      */
     public function ajout(Request $request): Response {
-        if($this->isCsrfTokenValid('ajout_niveau', $request->get('_token'))){
+        $libelleNiveau = $request->get("libelle");
+        if($this->isCsrfTokenValid('ajout_niveau', $request->get('_token')) && $libelleNiveau != ""){
             try{
-                $libelleNiveau = $request->get("libelle");
                 $niveau = new Niveau();
                 $niveau->setLevel($libelleNiveau);
                 $this->om->persist($niveau);
@@ -65,9 +68,11 @@ class AdminNiveauxController extends AbstractController{
     }
     
     /**
+     * Suppression d'un niveau après confirmation par l'utilisateur
      * @Route("/admin/niveau/suppr/{id}", name="admin.niveau.suppr")
      * @param Niveau $niveau
      * @return Response
+     * @throws ForeignKeyConstraintViolationException si le niveau est toujours utilisé
      */
     public function suppr(Niveau $niveau): Response{
         try{
@@ -86,6 +91,7 @@ class AdminNiveauxController extends AbstractController{
     }
     
     /**
+     * Retourne tous les niveaux
      * @Route("/admin/niveaux", name="admin.niveaux")
      * @return Response
      */

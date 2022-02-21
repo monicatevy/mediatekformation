@@ -39,6 +39,9 @@ class Niveau
         return $this->id;
     }
 
+    /**
+     * Retourne le niveau en string capitalisé
+     */
     public function getLevel(): ?string
     {
         return ucfirst($this->level);
