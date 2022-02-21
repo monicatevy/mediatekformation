@@ -32,6 +32,7 @@ class FormationsController extends AbstractController {
     }
 
     /**
+     * Retourne toutes les formations
      * @Route("/formations", name="formations")
      * @return Response
      */
@@ -46,6 +47,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
+     * Retourne les formations triées (ASC/DESC) sur le champ (ex: date, titre)
      * @Route("/formations/tri/{champ}/{ordre}", name="formations.sort")
      * @param type $champ
      * @param type $ordre
@@ -62,6 +64,8 @@ class FormationsController extends AbstractController {
     }   
         
     /**
+     * Retourne toutes les formations contenant une certaine valeur
+     * ou retourne toutes les formations triées par défaut si aucune valeur n'est saisie
      * @Route("/formations/recherche/{champ}", name="formations.findallcontain")
      * @param type $champ
      * @param Request $request
@@ -82,6 +86,7 @@ class FormationsController extends AbstractController {
     }
     
     /**
+     * Retourne le détail d'une formation
      * @Route("/formations/formation/{id}", name="formations.showone")
      * @param type $id
      * @return Response

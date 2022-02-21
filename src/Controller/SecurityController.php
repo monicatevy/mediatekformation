@@ -7,9 +7,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+/**
+ * Description of SecurityController
+ *
+ * @author monicatevy
+ */
 class SecurityController extends AbstractController
 {
     /**
+     * Retourne la page de connexion
      * @Route("/login", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -27,6 +33,7 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * Déconnexion
      * @Route("/logout", name="app_logout")
      */
     public function logout(): void

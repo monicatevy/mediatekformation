@@ -28,6 +28,7 @@ class AccueilController extends AbstractController{
     }    
     
     /**
+     * Retourne les n dernières formations ajoutées
      * @Route("/", name="accueil")
      * @return Response
      */
