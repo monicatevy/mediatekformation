@@ -5,6 +5,7 @@ use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Niveau;
 
 /**
  * Description of AccueilController
@@ -34,8 +35,11 @@ class AccueilController extends AbstractController{
      */
     public function index(): Response{
         $formations = $this->repository->findAllLasted(2);
+        $niveauRepository = $this->getDoctrine()->getManager()->getRepository(Niveau::class);
+        $niveaux = $niveauRepository->findAll();
         return $this->render("pages/accueil.html.twig", [
-            'formations' => $formations
+            'formations' => $formations,
+            'niveaux' => $niveaux
         ]);  
     }
 }
