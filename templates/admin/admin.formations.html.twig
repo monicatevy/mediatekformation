@@ -1,4 +1,6 @@
 {% extends "basefrontadmin.html.twig" %}
+{% block title %}Gestion des formations{% endblock %}
+
 {% block body %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success mt-2 mb-2">
