@@ -15,8 +15,8 @@ MediaTek Management est une application web (Symfony), développé dans le cadre
 
 ## Documentation
 
-[Documentation utilisateur](https://www.youtube.com/watch?v=urYGU9wt7j4)
-[Documentation technique](https://monicatevy.github.io/mediatekformationdoc/namespaces/app-controller.html)
+* [Documentation utilisateur](https://www.youtube.com/watch?v=urYGU9wt7j4)
+* [Documentation technique](https://monicatevy.github.io/mediatekformationdoc/namespaces/app-controller.html)
 
 ## Portfolio
 
