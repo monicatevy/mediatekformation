@@ -68,7 +68,7 @@
                         {{ formation.publishedatstring }}
                     </td>
                     <td class="text-center">
-                        <a href="{{ path('admin.formation.showone', {id:formation.id}) }}">
+                        <a href="{{ path('formations.showone', {id:formation.id}) }}">
                             <img width="120" height="90" src="{%if formation.miniature %}{{ formation.miniature }}{% else %}https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png{% endif %}">
                         </a>
                     </td>
